@@ -1,0 +1,29 @@
+.header-container {
+  background: #181819 !important;
+  border-radius: 0px !important;
+  box-shadow: 0px 0px 5px 0px #181819 !important;
+  border: none;
+  padding: 0;
+  height: 95px;
+}
+
+.header-title {
+  font-size: 2.2rem;
+  color: white;
+  text-align: center;
+  padding-top: 10px;
+  margin: auto;
+}
+
+.disabled-link {
+  pointer-events: none;
+  color: #926e6e !important;
+}
+
+.header-link {
+  font-size: 20px;
+  line-height: 24px;
+  color: white;
+  display: inline-block;
+  margin: 23px 0px 15px 45px;
+}
