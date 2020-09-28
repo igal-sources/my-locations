@@ -1,6 +1,6 @@
 import * as types from "../shared/types";
 
-export const fetchCategories = (categories) => {
+export const fetchAllCategories = (categories) => {
   return {
     type: types.FETCH_CATEGORIES,
     categories,
@@ -21,4 +21,4 @@ export const updateCategoryName = (name) => {
   };
 };
 
-export default { fetchCategories, updateCategoryName, addCategoryItem };
+export default { fetchAllCategories, updateCategoryName, addCategoryItem };

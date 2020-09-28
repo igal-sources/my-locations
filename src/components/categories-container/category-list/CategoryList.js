@@ -1,29 +1,25 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import allActions from "../../../actions";
-import { useCategories } from "../../../shared/hooks/use-selectors";
+//import { useCategories } from "../../../shared/hooks/use-selectors";
 import { Table } from "semantic-ui-react";
 import CategoryItem from "../category-item/CategoryItem";
+import { fetchCategories } from "../../../apis/categoriesService";
 import * as types from "../../../shared/types";
 import "./category-list.scss";
 
 const CategoryList = () => {
   const dispatch = useDispatch();
   const isCancelled = useRef(false);
-  const { categories } = useCategories();
-  const [Category, setCategories] = useState(categories);
-  console.log("CategoryList - categories: ", Category);
-  console.log('categories: ', categories);
+  const [Category, setCategories] = useState();
 
   const updateHeader = (actions) => {
     dispatch(allActions.titleActions.updateTitleView("Categories List"));
-    dispatch(allActions.toolbarActions.updateActionsStatus(actions));
-    dispatch(
-      allActions.categoriesActions.fetchCategories({
-        categories: [{ name: "My Home" }, { name: "My Work" }],
-      })
-    );
-    setCategories(categories);
+    dispatch(allActions.toolbarActions.updateActionsStatus(actions));    
+    fetchCategories(({categories}) => {
+      console.log('categories11111: ', categories);
+      setCategories(categories);
+    });
   };
 
   useEffect(() => {
@@ -40,7 +36,7 @@ const CategoryList = () => {
       isCancelled.current = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [categories]);
+  }, [Category]);
 
   return (
     <div className="category-list-container">
@@ -52,13 +48,14 @@ const CategoryList = () => {
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {Category && Category.map(({ name }, index) => (
-              <Table.Row key={index} className="category-list-table-row">
-                <Table.Cell>
-                  <CategoryItem key={index} categoryName={name} />
-                </Table.Cell>
-              </Table.Row>
-            ))}
+            {Category &&
+              Category.map(({ name }, index) => (
+                <Table.Row key={index} className="category-list-table-row">
+                  <Table.Cell>
+                    <CategoryItem key={index} categoryName={name} />
+                  </Table.Cell>
+                </Table.Row>
+              ))}
           </Table.Body>
         </Table>
       </div>
