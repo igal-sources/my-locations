@@ -8,29 +8,29 @@ import "./header.scss";
 const Header = () => {
   const isCancelled = useRef(false);
   const actionsStatus = useMappingActions();
+  console.log('actionsStatus: ', actionsStatus);
   const titleText = useViewTitle();
   const [headerTitle, setHeaderTitle] = useState(titleText);
-  console.log("headerTitle: ", titleText);
 
   const createActionLinkClassName = classNames({
     "header-link": true,
-    "disabled-link": actionsStatus[types.toolbarAction.CREATE],
+    "disabled-link": actionsStatus && actionsStatus[types.toolbarAction.CREATE],
   });
   const readActionLinkClassName = classNames({
     "header-link": true,
-    "disabled-link": actionsStatus[types.toolbarAction.READ],
+    "disabled-link": actionsStatus && actionsStatus[types.toolbarAction.READ],
   });
   const updateActionLinkClassName = classNames({
     "header-link": true,
-    "disabled-link": actionsStatus[types.toolbarAction.UPDATE],
+    "disabled-link": actionsStatus && actionsStatus[types.toolbarAction.UPDATE],
   });
   const deleteActionLinkClassName = classNames({
     "header-link": true,
-    "disabled-link": actionsStatus[types.toolbarAction.DELETE],
+    "disabled-link": actionsStatus && actionsStatus[types.toolbarAction.DELETE],
   });
   useEffect(() => {
     setHeaderTitle(titleText);
-    console.log('HEADER - useEffect: ', titleText);
+    console.log("HEADER - useEffect: ", titleText);
     return () => {
       isCancelled.current = true;
     };
@@ -49,10 +49,13 @@ const Header = () => {
       >
         CREATE
       </Link>
-      <Link to="/" onClick={() => setHeaderTitle("view")} className={readActionLinkClassName}>
+      <Link to="/" className={readActionLinkClassName}>
         READ
       </Link>
-      <Link to="/update-category" onClick={() => setHeaderTitle("edit")} className={updateActionLinkClassName}>
+      <Link
+        to={{ pathname: "/update-category", state: { titleText } }}
+        className={updateActionLinkClassName}
+      >
         UPDATE
       </Link>
       <Link to="/" onClick={() => setHeaderTitle("delete")} className={deleteActionLinkClassName}>

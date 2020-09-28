@@ -1,0 +1,36 @@
+.category-add-container {
+  position: relative;
+  box-shadow: 0 0 10px 2px;
+  background-color: #96b8b8;
+  margin: auto;
+  margin-top: 150px;
+  width: 55vw;
+  height: 55vh;
+}
+
+.category-add-header {
+  height: 45px;
+  background: #181819;
+  color: white;
+  text-align: center;
+}
+
+.field>:first-child {
+  font-size: large;
+  padding-left: 15px;
+  padding-top: 30px;
+}
+
+.ui.form .inline.field>input {
+  height: 25px;
+  text-align: left;
+  background-color: #d4f1f1;
+}
+
+.category-add-button {
+  text-align: center;
+  width: 15%;
+  left: 400px;
+  bottom: -400px;
+  position: absolute;
+}

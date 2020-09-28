@@ -8,6 +8,7 @@ import App from "./App";
 
 export const loadState = () => {
   try {
+    //localStorage.removeItem("state");
     const serializedState = localStorage.getItem("state");
     console.log('serializedState: ', serializedState);
     if (!serializedState) return undefined;
