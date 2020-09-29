@@ -8,7 +8,6 @@ import "./header.scss";
 const Header = () => {
   const isCancelled = useRef(false);
   const actionsStatus = useMappingActions();
-  console.log('actionsStatus: ', actionsStatus);
   const titleText = useViewTitle();
   const [headerTitle, setHeaderTitle] = useState(titleText);
 

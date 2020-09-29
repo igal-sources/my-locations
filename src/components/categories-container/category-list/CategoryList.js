@@ -16,7 +16,7 @@ const CategoryList = () => {
   const updateHeader = (actions) => {
     dispatch(allActions.titleActions.updateTitleView("Categories List"));
     dispatch(allActions.toolbarActions.updateActionsStatus(actions));    
-    fetchCategories(({categories}) => {
+    fetchCategories((categories) => {
       console.log('categories11111: ', categories);
       setCategories(categories);
     });

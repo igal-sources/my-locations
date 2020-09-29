@@ -8,8 +8,9 @@ import App from "./App";
 
 export const loadState = () => {
   try {
+    //localStorage.removeItem("state");
     const serializedState = localStorage.getItem("state");
-    console.log('serializedState: ', serializedState);
+    console.log("serializedState: ", serializedState);
     if (!serializedState) return undefined;
     else return JSON.parse(serializedState);
   } catch (err) {
@@ -20,7 +21,7 @@ export const loadState = () => {
 export const saveState = (state) => {
   try {
     const serializedState = JSON.stringify(state);
-    console.log('saveState - serializedState: ', serializedState);
+    console.log("saveState - serializedState: ", serializedState);
     localStorage.setItem("state", serializedState);
   } catch (err) {
     console.log(err);
