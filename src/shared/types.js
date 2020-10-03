@@ -3,6 +3,7 @@ export const UPDATE_ACTIONS_STATUS = "UPDATE_ACTIONS_STATUS";
 export const FETCH_CATEGORIES = "FETCH_CATEGORIES";
 export const ADD_CATEGORY_ITEM = "ADD_CATEGORY_ITEM";
 export const UPDATE_CATEGORY = "UPDATE_CATEGORY";
+export const REMOVE_CATEGORY = "REMOVE_CATEGORY";
 
 export const toolbarAction = {
   CREATE: "CREATE",

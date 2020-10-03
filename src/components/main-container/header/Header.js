@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { useViewTitle, useMappingActions } from "../../../shared/hooks/use-selectors";
+import CategoryConfirmRemove from "../../categories-container/category-remove/CategoryConfirmRemove";
 import * as types from "../../../shared/types";
 import "./header.scss";
 
@@ -10,7 +11,12 @@ const Header = () => {
   const actionsStatus = useMappingActions();
   const titleText = useViewTitle();
   const [headerTitle, setHeaderTitle] = useState(titleText);
+  const [modalOpen, setModalOpen] = useState(false);
 
+  const handleDeleteAction = () => {
+    console.log('handleDeleteAction: ');
+    setModalOpen(true);
+  }
   const createActionLinkClassName = classNames({
     "header-link": true,
     "disabled-link": actionsStatus && actionsStatus[types.toolbarAction.CREATE],
@@ -28,8 +34,10 @@ const Header = () => {
     "disabled-link": actionsStatus && actionsStatus[types.toolbarAction.DELETE],
   });
   useEffect(() => {
-    setHeaderTitle(titleText);
+    !isCancelled.current && setModalOpen(false);
     console.log("HEADER - useEffect: ", titleText);
+    setHeaderTitle(titleText);
+    
     return () => {
       isCancelled.current = true;
     };
@@ -57,9 +65,10 @@ const Header = () => {
       >
         UPDATE
       </Link>
-      <Link to="/" onClick={() => setHeaderTitle("delete")} className={deleteActionLinkClassName}>
+      <Link to="/" onClick={handleDeleteAction} className={deleteActionLinkClassName}>
         DELETE
       </Link>
+      <CategoryConfirmRemove categoryName={headerTitle} modalOpen={modalOpen} />
     </div>
   );
 };

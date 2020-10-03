@@ -7,18 +7,25 @@ export const fetchAllCategories = (categories) => {
   };
 };
 
-export const addCategoryItem = (category) => {
+export const addCategoryItem = (name) => {
   return {
     type: types.ADD_CATEGORY_ITEM,
-    category,
+    name,
   };
 };
 
-export const updateCategoryName = (name) => {
+export const updateCategory = (name) => {
   return {
     type: types.UPDATE_CATEGORY,
     name,
   };
 };
 
-export default { fetchAllCategories, updateCategoryName, addCategoryItem };
+export const removeCategory = (name) => {
+  return {
+    type: types.REMOVE_CATEGORY,
+    name,
+  };
+};
+
+export default { fetchAllCategories, updateCategory, addCategoryItem, removeCategory };

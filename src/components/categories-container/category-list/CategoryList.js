@@ -11,7 +11,7 @@ import "./category-list.scss";
 const CategoryList = () => {
   const dispatch = useDispatch();
   const isCancelled = useRef(false);
-  const [Category, setCategories] = useState();
+  const [Category, setCategories] = useState([]);
 
   const updateHeader = (actions) => {
     dispatch(allActions.titleActions.updateTitleView("Categories List"));
