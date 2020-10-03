@@ -14,9 +14,9 @@ const Header = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleDeleteAction = () => {
-    console.log('handleDeleteAction: ');
+    console.log("handleDeleteAction: ");
     setModalOpen(true);
-  }
+  };
   const createActionLinkClassName = classNames({
     "header-link": true,
     "disabled-link": actionsStatus && actionsStatus[types.toolbarAction.CREATE],
@@ -37,7 +37,7 @@ const Header = () => {
     !isCancelled.current && setModalOpen(false);
     console.log("HEADER - useEffect: ", titleText);
     setHeaderTitle(titleText);
-    
+
     return () => {
       isCancelled.current = true;
     };
@@ -56,11 +56,14 @@ const Header = () => {
       >
         CREATE
       </Link>
-      <Link to="/" className={readActionLinkClassName}>
-        READ
+      <Link
+        to={{ pathname: "/view-category", state: { titleText, readOnly: true } }}
+        className={readActionLinkClassName}
+      >
+        VIEW
       </Link>
       <Link
-        to={{ pathname: "/update-category", state: { titleText } }}
+        to={{ pathname: "/update-category", state: { titleText, readOnly: false } }}
         className={updateActionLinkClassName}
       >
         UPDATE

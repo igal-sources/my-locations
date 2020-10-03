@@ -10,6 +10,7 @@ export default () => (
     <Route exact path="/" component={CategoryList} />    
     <Route path="/add-category" component={CategoryAdd} />    
     <Route path="/update-category" component={CategoryUpdate} />    
+    <Route path="/view-category" component={CategoryUpdate} />    
     <Route component={NotFoundPage} />
   </Switch>
 );

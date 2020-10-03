@@ -19,7 +19,6 @@ const CategoryAdd = () => {
   const handleClick = () => {
     setActionsState(types.actionsMapping);
     dispatch(allActions.categoriesActions.addCategoryItem(newName));
-    console.log('addCategoryItem: ', newName);
     history.push("./");
   };
 

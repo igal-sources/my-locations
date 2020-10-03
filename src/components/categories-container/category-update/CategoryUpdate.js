@@ -10,9 +10,11 @@ const CategoryUpdate = (props) => {
   const isCancelled = useRef(false);
   const dispatch = useDispatch();
   const history = useHistory();
-  const { titleText } = props.location.state;
+  const { titleText, readOnly } = props.location.state;
+  console.log('props.location.state: ', props.location.state);
   const [actionsState, setActionsState] = useState(types.actionsMapping);
   const [newName, setNewName] = useState(titleText);
+  const [captionsText, setCaptionsText] = useState({header:"", buttonText: ""});
 
   const updateToolbarActions = () => {
     dispatch(allActions.toolbarActions.updateActionsStatus(actionsState));
@@ -30,6 +32,8 @@ const CategoryUpdate = (props) => {
     setNewName(value);
   };
 
+  const {header, buttonText} = captionsText;
+
   useEffect(() => {
     !isCancelled.current &&
       setActionsState({
@@ -39,6 +43,9 @@ const CategoryUpdate = (props) => {
         DELETE: true,
       });
     updateToolbarActions();
+    setCaptionsText({
+      header: readOnly ? "View" : "Update", 
+      buttonText: readOnly ? "Done" : "Update"});
     return () => {
       isCancelled.current = true;
     };
@@ -48,7 +55,7 @@ const CategoryUpdate = (props) => {
   return (
     <div className="category-update-container">
       <div className="category-update-header">
-        <h1>Update : {titleText}</h1>
+        <h1>{header} : {titleText}</h1>
       </div>
       <Form className="category-update-form" size={"mini"}>
         <Form.Field className="category-update-name">
@@ -57,6 +64,7 @@ const CategoryUpdate = (props) => {
             <input
               className="category-update-input"
               value={newName}
+              disabled={readOnly}
               placeholder="Category Name"
               onChange={handleTextChange}
               autoFocus
@@ -65,7 +73,7 @@ const CategoryUpdate = (props) => {
         </Form.Field>
         <div className="category-update-button">
           <Button type="submit" color={"green"} onClick={handleClick}>
-            Update
+            {buttonText}
           </Button>
         </div>
       </Form>

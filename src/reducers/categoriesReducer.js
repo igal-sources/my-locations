@@ -5,7 +5,6 @@ const defaultState = {
 };
 
 export const categoriesReducer = (state = defaultState, action) => {
-  console.log("categoriesReducer - state: ", action, state);
   switch (action.type) {
     case types.FETCH_CATEGORIES:
       return {
@@ -15,7 +14,7 @@ export const categoriesReducer = (state = defaultState, action) => {
     case types.ADD_CATEGORY_ITEM:
       return {
         ...state,
-        categories: [...state.categories, {name: action.name}],
+        categories: [...state.categories, { name: action.name }],
       };
     case types.UPDATE_CATEGORY:
       return {
@@ -24,12 +23,12 @@ export const categoriesReducer = (state = defaultState, action) => {
       };
     case types.REMOVE_CATEGORY:
       var array = [...state.categories];
-      const index = array.findIndex(x => x.name === action.name);
+      const index = array.findIndex((x) => x.name === action.name);
       if (index !== -1) {
         array.splice(index, 1);
-        console.log('REMOVE_CATEGORY array: ', array);
+        console.log("REMOVE_CATEGORY array: ", array);
       }
-      return {...array};
+      return { categories: [...array] };
     default:
       return state;
   }

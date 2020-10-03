@@ -6,17 +6,15 @@ import "./category-confirm-remove.scss";
 import { Modal, Button, Header } from "semantic-ui-react";
 
 const CategoryConfirmRemove = ({ categoryName, modalOpen }) => {
-  console.log('categoryName, modalOpen: ', categoryName, modalOpen);
   const isCancelled = useRef(false);
   const dispatch = useDispatch();
   const history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleDeleteAction = () => {
-    console.log('REMOVE categoryName: ', categoryName);
     dispatch(allActions.titleActions.updateTitleView("Categories List"));
     dispatch(allActions.categoriesActions.removeCategory(categoryName));
-    //history.push("./");
+    history.push("./");
     setIsOpen(false);
   };
   useEffect(() => {

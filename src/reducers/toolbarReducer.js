@@ -8,7 +8,6 @@ const defaultState = {
 };
 
 export const toolbarReducer = (state = defaultState, action) => {
-  console.log('toolbarReducer: ', action);
   switch (action.type) {
     case types.UPDATE_ACTIONS_STATUS:
       return {
