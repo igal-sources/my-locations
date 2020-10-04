@@ -11,7 +11,6 @@ const CategoryUpdate = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { titleText, readOnly } = props.location.state;
-  console.log('props.location.state: ', props.location.state);
   const [actionsState, setActionsState] = useState(types.actionsMapping);
   const [newName, setNewName] = useState(titleText);
   const [captionsText, setCaptionsText] = useState({header:"", buttonText: ""});
@@ -22,7 +21,7 @@ const CategoryUpdate = (props) => {
 
   const handleClick = () => {
     setActionsState(types.actionsMapping);
-    dispatch(allActions.titleActions.updateTitleView("Categories List"));
+    dispatch(allActions.titleActions.updateTitleView({name: "Categories List"}));
     dispatch(allActions.categoriesActions.updateCategory(newName));
     history.push("./");
   };

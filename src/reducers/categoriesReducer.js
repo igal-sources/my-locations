@@ -8,6 +8,7 @@ const defaultState = {
 };
 
 export const categoriesReducer = (state = defaultState, action) => {
+  console.log('action: ', action);
   switch (action.type) {
     case types.FETCH_CATEGORIES:
       return {
@@ -20,6 +21,7 @@ export const categoriesReducer = (state = defaultState, action) => {
         categories: [...state.categories, action.category ],
       };
     case types.UPDATE_CATEGORY:
+      //const ind = state.findIndex(category => category.id === action.payload.id)
       return {
         ...state,
         name: action.name,

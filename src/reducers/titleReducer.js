@@ -9,7 +9,7 @@ export const titleReducer = (state = defaultState, action) => {
     case types.UPDATE_TITLE_VIEW:
       return {
         ...state,
-        title: action.title,
+        categoryItem: action.categoryItem,
       };
     default:
       return state;

@@ -3,22 +3,26 @@ import { useDispatch } from "react-redux";
 import allActions from "../../../actions";
 import "./category-item.scss";
 
-const CategoryItem = ({ categoryName }) => {
+const CategoryItem = ({ categoryItem }) => {
   const dispatch = useDispatch();
 
-  const handleCategoryItemClick = (name) => {
-    dispatch(allActions.titleActions.updateTitleView(name));
-    dispatch(allActions.toolbarActions.updateActionsStatus({
-      CREATE: true,
-      READ: false,
-      UPDATE: false,
-      DELETE: false,
-    }));
+  const { name } = categoryItem;
+
+  const handleCategoryItemClick = () => {
+    dispatch(allActions.titleActions.updateTitleView(categoryItem));
+    dispatch(
+      allActions.toolbarActions.updateActionsStatus({
+        CREATE: true,
+        READ: false,
+        UPDATE: false,
+        DELETE: false,
+      })
+    );
   };
 
   return (
-    <div className="category-item-container" onClick={(e) => handleCategoryItemClick(categoryName)}>
-        <h3 className="category-item-title">{categoryName}</h3>
+    <div className="category-item-container" onClick={handleCategoryItemClick}>
+      <h3 className="category-item-title">{name}</h3>
     </div>
   );
 };

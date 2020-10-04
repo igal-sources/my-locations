@@ -12,7 +12,7 @@ const CategoryConfirmRemove = ({ categoryName, modalOpen }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleDeleteAction = () => {
-    dispatch(allActions.titleActions.updateTitleView("Categories List"));
+    dispatch(allActions.titleActions.updateTitleView({name: "Categories List"}));
     dispatch(allActions.categoriesActions.removeCategory(categoryName));
     history.push("./");
     setIsOpen(false);

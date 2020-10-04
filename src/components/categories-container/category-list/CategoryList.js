@@ -13,7 +13,7 @@ const CategoryList = () => {
   const [Category, setCategories] = useState([]);
 
   const updateHeader = (actions) => {
-    dispatch(allActions.titleActions.updateTitleView("Categories List"));
+    dispatch(allActions.titleActions.updateTitleView({name: "Categories List"}));
     dispatch(allActions.toolbarActions.updateActionsStatus(actions));    
     fetchCategories((categories) => {
       console.log('categories11111: ', categories);
@@ -48,10 +48,10 @@ const CategoryList = () => {
           </Table.Header>
           <Table.Body>
             {Category &&
-              Category.map(({ name }, index) => (
+              Category.map((item, index) => (
                 <Table.Row key={index} className="category-list-table-row">
                   <Table.Cell>
-                    <CategoryItem key={index} categoryName={name} />
+                    <CategoryItem key={index} categoryItem={item} />
                   </Table.Cell>
                 </Table.Row>
               ))}

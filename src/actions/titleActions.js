@@ -1,9 +1,9 @@
 import * as types from "../shared/types";
 
-export const updateTitleView = title => {
+export const updateTitleView = categoryItem => {
   return {
     type: types.UPDATE_TITLE_VIEW,
-    title
+    categoryItem
   };
 };
 

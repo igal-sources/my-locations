@@ -1,8 +1,13 @@
 import { useSelector } from "react-redux";
 
 export const useViewTitle = () => {
-  const { title } = useSelector(state => state.titleReducer);
-  return title;
+  const {categoryItem: {name}} = useSelector(state => state.titleReducer);
+  return name;
+};
+
+export const useSelectedCategory = (id) => {
+  const category = useSelector(state => state.titleReducer);
+  return category;
 };
 
 export const useMappingActions = () => {
