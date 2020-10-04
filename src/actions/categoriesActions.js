@@ -15,10 +15,10 @@ export const addCategoryItem = (category) => {
   };
 };
 
-export const updateCategory = (name) => {
+export const updateCategory = (category) => {
   return {
     type: types.UPDATE_CATEGORY,
-    name,
+    category,
   };
 };
 

@@ -9,8 +9,9 @@ import "./header.scss";
 const Header = () => {
   const isCancelled = useRef(false);
   const actionsStatus = useMappingActions();
-  const titleText = useViewTitle();
-  const [headerTitle, setHeaderTitle] = useState(titleText);
+  const categoryItem = useViewTitle();
+  console.log("categoryItem: ", categoryItem);
+  const [headerTitle, setHeaderTitle] = useState();
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleDeleteAction = () => {
@@ -35,14 +36,13 @@ const Header = () => {
   });
   useEffect(() => {
     !isCancelled.current && setModalOpen(false);
-    console.log("HEADER - useEffect: ", titleText);
-    setHeaderTitle(titleText);
-
+    setHeaderTitle(categoryItem.name);
+    console.log("HEADER - useEffect: ", headerTitle);
     return () => {
       isCancelled.current = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [titleText]);
+  }, [categoryItem.name]);
 
   return (
     <div className="header-container">
@@ -57,13 +57,13 @@ const Header = () => {
         CREATE
       </Link>
       <Link
-        to={{ pathname: "/view-category", state: { titleText, readOnly: true } }}
+        to={{ pathname: "/view-category", state: { headerTitle, readOnly: true } }}
         className={readActionLinkClassName}
       >
         VIEW
       </Link>
       <Link
-        to={{ pathname: "/update-category", state: { titleText, readOnly: false } }}
+        to={{ pathname: "/update-category", state: { headerTitle, readOnly: false } }}
         className={updateActionLinkClassName}
       >
         UPDATE

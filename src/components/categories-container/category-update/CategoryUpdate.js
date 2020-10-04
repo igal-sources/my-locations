@@ -22,7 +22,7 @@ const CategoryUpdate = (props) => {
   const handleClick = () => {
     setActionsState(types.actionsMapping);
     dispatch(allActions.titleActions.updateTitleView({name: "Categories List"}));
-    dispatch(allActions.categoriesActions.updateCategory(newName));
+    dispatch(allActions.categoriesActions.updateCategory({ id: 8, name: newName }));
     history.push("./");
   };
 
