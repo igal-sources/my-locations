@@ -1,7 +1,10 @@
 import * as types from "../shared/types";
 
 const defaultState = {
-  categories: [{ name: "Home" }, { name: "Work" }],
+  categories: [
+    { id: 1, name: "Home" },
+    { id: 2, name: "Work" },
+  ],
 };
 
 export const categoriesReducer = (state = defaultState, action) => {
@@ -14,7 +17,7 @@ export const categoriesReducer = (state = defaultState, action) => {
     case types.ADD_CATEGORY_ITEM:
       return {
         ...state,
-        categories: [...state.categories, { name: action.name }],
+        categories: [...state.categories, action.category ],
       };
     case types.UPDATE_CATEGORY:
       return {

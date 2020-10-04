@@ -14,3 +14,14 @@ export const useCategories = () => {
   const { categories } = useSelector(state => state.categoriesReducer);
   return categories;
 };
+
+export const useNextCategoryId = () => {
+  const { categories } = useSelector(state => state.categoriesReducer);
+  let max = 0;
+  categories.forEach((cat) => {
+    if (cat.id > max) {
+      max = cat.id;
+    }
+  });
+  return max + 1;
+};

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Form, Button } from "semantic-ui-react";
+import { useNextCategoryId } from "../../../shared/hooks/use-selectors";
 import allActions from "../../../actions";
 import * as types from "../../../shared/types";
 import "./category-add.scss";
@@ -10,15 +11,21 @@ const CategoryAdd = () => {
   const isCancelled = useRef(false);
   const dispatch = useDispatch();
   const history = useHistory();
+  const nextID = useNextCategoryId();
+  console.log('nextID: ', nextID);
   const [actionsState, setActionsState] = useState(types.actionsMapping);
   const [newName, setNewName] = useState();
+  const [newId, setNewId] = useState();
+  console.log('newId: ', newId);
 
   const updateToolbarActions = () => {
     dispatch(allActions.toolbarActions.updateActionsStatus(actionsState));
   };
+
   const handleClick = () => {
     setActionsState(types.actionsMapping);
-    dispatch(allActions.categoriesActions.addCategoryItem(newName));
+    setNewId(nextID);
+    dispatch(allActions.categoriesActions.addCategoryItem({ id: nextID, name: newName }));
     history.push("./");
   };
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import allActions from "../../../actions";
-//import { useCategories } from "../../../shared/hooks/use-selectors";
 import { Table } from "semantic-ui-react";
 import CategoryItem from "../category-item/CategoryItem";
 import { fetchCategories } from "../../../apis/categoriesService";
