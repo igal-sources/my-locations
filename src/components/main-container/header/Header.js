@@ -14,6 +14,8 @@ const Header = () => {
   const [headerTitle, setHeaderTitle] = useState();
   const [modalOpen, setModalOpen] = useState(false);
 
+  const { name } = categoryItem;
+
   const handleDeleteAction = () => {
     console.log("handleDeleteAction: ");
     setModalOpen(true);
@@ -42,7 +44,7 @@ const Header = () => {
       isCancelled.current = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [categoryItem.name]);
+  }, [name]);
 
   return (
     <div className="header-container">
@@ -63,7 +65,7 @@ const Header = () => {
         VIEW
       </Link>
       <Link
-        to={{ pathname: "/update-category", state: { headerTitle, readOnly: false } }}
+        to={{ pathname: "/update-category", state: { categoryItem, readOnly: false } }}
         className={updateActionLinkClassName}
       >
         UPDATE

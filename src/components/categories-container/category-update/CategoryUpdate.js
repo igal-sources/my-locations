@@ -10,9 +10,9 @@ const CategoryUpdate = (props) => {
   const isCancelled = useRef(false);
   const dispatch = useDispatch();
   const history = useHistory();
-  const { titleText, readOnly } = props.location.state;
+  const { categoryItem, readOnly } = props.location.state;
   const [actionsState, setActionsState] = useState(types.actionsMapping);
-  const [newName, setNewName] = useState(titleText);
+  const [newName, setNewName] = useState(categoryItem.name);
   const [captionsText, setCaptionsText] = useState({header:"", buttonText: ""});
 
   const updateToolbarActions = () => {
@@ -22,7 +22,7 @@ const CategoryUpdate = (props) => {
   const handleClick = () => {
     setActionsState(types.actionsMapping);
     dispatch(allActions.titleActions.updateTitleView({name: "Categories List"}));
-    dispatch(allActions.categoriesActions.updateCategory({ id: 8, name: newName }));
+    dispatch(allActions.categoriesActions.updateCategory({ id: categoryItem.id, name: newName }));
     history.push("./");
   };
 
@@ -54,7 +54,7 @@ const CategoryUpdate = (props) => {
   return (
     <div className="category-update-container">
       <div className="category-update-header">
-        <h1>{header} : {titleText}</h1>
+        <h1>{header} : {categoryItem.name}</h1>
       </div>
       <Form className="category-update-form" size={"mini"}>
         <Form.Field className="category-update-name">

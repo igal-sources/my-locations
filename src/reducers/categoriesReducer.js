@@ -21,10 +21,10 @@ export const categoriesReducer = (state = defaultState, action) => {
         categories: [...state.categories, action.category ],
       };
     case types.UPDATE_CATEGORY:
-      //const ind = state.findIndex(category => category.id === action.payload.id)
+      const ind = state.categories.findIndex(category => category.id === action.category.id)
       return {
         ...state,
-        name: action.name,
+        category: state.categories[ind] = action.category,
       };
     case types.REMOVE_CATEGORY:
       var array = [...state.categories];
