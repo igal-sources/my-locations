@@ -5,6 +5,10 @@ export const ADD_CATEGORY_ITEM = "ADD_CATEGORY_ITEM";
 export const UPDATE_CATEGORY = "UPDATE_CATEGORY";
 export const REMOVE_CATEGORY = "REMOVE_CATEGORY";
 
+export const constants = {
+  Categories: "Categories"
+};
+
 export const toolbarAction = {
   CREATE: "CREATE",
   READ: "READ",

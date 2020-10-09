@@ -14,9 +14,9 @@ const Header = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleDeleteAction = () => {
-    console.log("handleDeleteAction: ");
     setModalOpen(true);
   };
+
   const createActionLinkClassName = classNames({
     "header-link": true,
     "disabled-link": actionsStatus && actionsStatus[types.toolbarAction.CREATE],
@@ -33,6 +33,7 @@ const Header = () => {
     "header-link": true,
     "disabled-link": actionsStatus && actionsStatus[types.toolbarAction.DELETE],
   });
+
   useEffect(() => {
     !isCancelled.current && setModalOpen(false);
     setHeaderTitle(categoryItem && categoryItem.name);

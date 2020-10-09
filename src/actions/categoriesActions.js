@@ -8,7 +8,6 @@ export const fetchAllCategories = (categories) => {
 };
 
 export const addCategoryItem = (category) => {
-  console.log('category: ', category);
   return {
     type: types.ADD_CATEGORY_ITEM,
     category

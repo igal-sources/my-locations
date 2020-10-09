@@ -6,6 +6,5 @@ export const fetchCategories = (callback) => {
       categories,
     },
   } = store;
-  console.log("STATE: ", categories);
   callback(categories);
 };

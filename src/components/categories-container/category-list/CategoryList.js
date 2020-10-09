@@ -13,10 +13,10 @@ const CategoryList = () => {
   const [Category, setCategories] = useState([]);
 
   const updateHeader = (actions) => {
-    dispatch(allActions.titleActions.updateTitleView({name: "Categories List"}));
+    dispatch(allActions.titleActions.updateTitleView({name: types.constants.Categories}));
     dispatch(allActions.toolbarActions.updateActionsStatus(actions));    
     fetchCategories((categories) => {
-      console.log('categories11111: ', categories);
+      console.log('categoriesList: ', categories);
       setCategories(categories);
     });
   };
