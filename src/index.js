@@ -8,9 +8,9 @@ import App from "./App";
 
 export const loadState = () => {
   try {
-    //localStorage.removeItem("state");
+    localStorage.removeItem("state");
     const serializedState = localStorage.getItem("state");
-    //console.log("serializedState: ", serializedState);
+    console.log("serializedState: ", serializedState);
     if (!serializedState) return undefined;
     else return JSON.parse(serializedState);
   } catch (err) {

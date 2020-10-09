@@ -8,6 +8,7 @@ const defaultState = {
 };
 
 export const categoriesReducer = (state = defaultState, action) => {
+  console.log('action: ', action);
   switch (action.type) {
     case types.FETCH_CATEGORIES:
       return {
@@ -26,7 +27,9 @@ export const categoriesReducer = (state = defaultState, action) => {
         ...state.categories[ind] = action.category,
       };
     case types.REMOVE_CATEGORY:
-      return state.categories.filter(c => c.id !== action.category.id);
+      return {
+      ...state.categories.filter(c => c.id !== action.category.id)
+    };
     default:
       return state;
   }

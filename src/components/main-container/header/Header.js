@@ -13,7 +13,7 @@ const Header = () => {
   const [headerTitle, setHeaderTitle] = useState();
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleDeleteAction = () => {
+  const handleDeleteAction = () => {    
     setModalOpen(true);
   };
 
@@ -50,7 +50,7 @@ const Header = () => {
       </div>
       <Link
         to="/add-category"
-        onClick={() => setHeaderTitle("New Category")}
+        onClick={() => setHeaderTitle(types.constants.NewCategory)}
         className={createActionLinkClassName}
       >
         CREATE
