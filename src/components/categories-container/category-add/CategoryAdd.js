@@ -12,11 +12,8 @@ const CategoryAdd = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const nextID = useNextCategoryId();
-  console.log('nextID: ', nextID);
   const [actionsState, setActionsState] = useState(types.actionsMapping);
   const [newName, setNewName] = useState();
-  const [newId, setNewId] = useState();
-  console.log('newId: ', newId);
 
   const updateToolbarActions = () => {
     dispatch(allActions.toolbarActions.updateActionsStatus(actionsState));
@@ -24,7 +21,6 @@ const CategoryAdd = () => {
 
   const handleClick = () => {
     setActionsState(types.actionsMapping);
-    setNewId(nextID);
     dispatch(allActions.categoriesActions.addCategoryItem({ id: nextID, name: newName }));
     history.push("./");
   };

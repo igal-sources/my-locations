@@ -24,16 +24,10 @@ export const categoriesReducer = (state = defaultState, action) => {
       const ind = state.categories.findIndex(category => category.id === action.category.id)
       return {
         ...state,
-        category: state.categories[ind] = action.category,
+        ...state.categories[ind] = action.category,
       };
     case types.REMOVE_CATEGORY:
-      var array = [...state.categories];
-      const index = array.findIndex((x) => x.name === action.name);
-      if (index !== -1) {
-        array.splice(index, 1);
-        console.log("REMOVE_CATEGORY array: ", array);
-      }
-      return { categories: [...array] };
+      return state.categories.filter(c => c.id !== action.category.id);
     default:
       return state;
   }

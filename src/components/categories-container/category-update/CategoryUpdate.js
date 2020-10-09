@@ -12,8 +12,10 @@ const CategoryUpdate = (props) => {
   const history = useHistory();
   const { categoryItem, readOnly } = props.location.state;
   const [actionsState, setActionsState] = useState(types.actionsMapping);
-  const [newName, setNewName] = useState(categoryItem.name);
-  const [captionsText, setCaptionsText] = useState({header:"", buttonText: ""});
+  const [newName, setNewName] = useState();
+  const [captionsText, setCaptionsText] = useState({ header: "", buttonText: "" });
+
+  const { id = null, name = "" } = categoryItem && categoryItem;
 
   const updateToolbarActions = () => {
     dispatch(allActions.toolbarActions.updateActionsStatus(actionsState));
@@ -21,8 +23,8 @@ const CategoryUpdate = (props) => {
 
   const handleClick = () => {
     setActionsState(types.actionsMapping);
-    dispatch(allActions.titleActions.updateTitleView({name: "Categories List"}));
-    dispatch(allActions.categoriesActions.updateCategory({ id: categoryItem.id, name: newName }));
+    dispatch(allActions.titleActions.updateTitleView({ name: "Categories List" }));
+    dispatch(allActions.categoriesActions.updateCategory({ id: id, name: newName }));
     history.push("./");
   };
 
@@ -31,7 +33,7 @@ const CategoryUpdate = (props) => {
     setNewName(value);
   };
 
-  const {header, buttonText} = captionsText;
+  const { header, buttonText } = captionsText;
 
   useEffect(() => {
     !isCancelled.current &&
@@ -41,10 +43,12 @@ const CategoryUpdate = (props) => {
         UPDATE: false,
         DELETE: true,
       });
+    setNewName(name);
     updateToolbarActions();
     setCaptionsText({
-      header: readOnly ? "View" : "Update", 
-      buttonText: readOnly ? "Done" : "Update"});
+      header: readOnly ? "View" : "Update",
+      buttonText: readOnly ? "Done" : "Update",
+    });
     return () => {
       isCancelled.current = true;
     };
@@ -54,7 +58,9 @@ const CategoryUpdate = (props) => {
   return (
     <div className="category-update-container">
       <div className="category-update-header">
-        <h1>{header} : {categoryItem.name}</h1>
+        <h1>
+          {header} : {newName}
+        </h1>
       </div>
       <Form className="category-update-form" size={"mini"}>
         <Form.Field className="category-update-name">

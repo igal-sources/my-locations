@@ -22,10 +22,10 @@ export const updateCategory = (category) => {
   };
 };
 
-export const removeCategory = (name) => {
+export const removeCategory = (category) => {
   return {
     type: types.REMOVE_CATEGORY,
-    name,
+    category,
   };
 };
 

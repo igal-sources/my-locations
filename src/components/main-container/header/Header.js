@@ -10,11 +10,8 @@ const Header = () => {
   const isCancelled = useRef(false);
   const actionsStatus = useMappingActions();
   const categoryItem = useViewTitle();
-  console.log("categoryItem: ", categoryItem);
   const [headerTitle, setHeaderTitle] = useState();
   const [modalOpen, setModalOpen] = useState(false);
-
-  const { name } = categoryItem;
 
   const handleDeleteAction = () => {
     console.log("handleDeleteAction: ");
@@ -38,13 +35,12 @@ const Header = () => {
   });
   useEffect(() => {
     !isCancelled.current && setModalOpen(false);
-    setHeaderTitle(categoryItem.name);
-    console.log("HEADER - useEffect: ", headerTitle);
+    setHeaderTitle(categoryItem && categoryItem.name);
     return () => {
       isCancelled.current = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [name]);
+  }, [categoryItem && categoryItem.name]);
 
   return (
     <div className="header-container">
@@ -59,7 +55,7 @@ const Header = () => {
         CREATE
       </Link>
       <Link
-        to={{ pathname: "/view-category", state: { headerTitle, readOnly: true } }}
+        to={{ pathname: "/view-category", state: { categoryItem, readOnly: true } }}
         className={readActionLinkClassName}
       >
         VIEW
@@ -73,7 +69,7 @@ const Header = () => {
       <Link to="/" onClick={handleDeleteAction} className={deleteActionLinkClassName}>
         DELETE
       </Link>
-      <CategoryConfirmRemove categoryName={headerTitle} modalOpen={modalOpen} />
+      <CategoryConfirmRemove categoryItem={categoryItem} modalOpen={modalOpen} />
     </div>
   );
 };

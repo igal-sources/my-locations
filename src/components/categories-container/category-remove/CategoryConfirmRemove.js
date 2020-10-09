@@ -2,18 +2,20 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import allActions from "../../../actions";
-import "./category-confirm-remove.scss";
 import { Modal, Button, Header } from "semantic-ui-react";
+import "./category-confirm-remove.scss";
 
-const CategoryConfirmRemove = ({ categoryName, modalOpen }) => {
+const CategoryConfirmRemove = ({ categoryItem = {}, modalOpen }) => {
   const isCancelled = useRef(false);
   const dispatch = useDispatch();
   const history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
 
+  const { name = "" } = categoryItem && categoryItem;
+
   const handleDeleteAction = () => {
     dispatch(allActions.titleActions.updateTitleView({name: "Categories List"}));
-    dispatch(allActions.categoriesActions.removeCategory(categoryName));
+    dispatch(allActions.categoriesActions.removeCategory(categoryItem));
     history.push("./");
     setIsOpen(false);
   };
@@ -34,7 +36,7 @@ const CategoryConfirmRemove = ({ categoryName, modalOpen }) => {
       <Modal.Header>Remove category</Modal.Header>
       <Modal.Content image>
         <Modal.Description>
-          <Header>Confirm remove {categoryName}? </Header>
+          <Header>Confirm remove {name}? </Header>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>

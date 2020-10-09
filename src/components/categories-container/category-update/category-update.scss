@@ -2,9 +2,10 @@
   position: relative;
   box-shadow: 0 0 10px 2px;
   background-color: #96b8b8;
+  display: table; 
   margin: auto;
   margin-top: 150px;
-  width: 55vw;
+  width: 50vw;
   height: 55vh;
 }
 
@@ -30,7 +31,8 @@
 .category-update-button {
   text-align: center;
   width: 15%;
-  left: 400px;
-  bottom: -400px;
-  position: absolute;
+  display: table-cell; 
+  vertical-align: bottom;
+  bottom: 200px;
+  position: fixed;
 }
