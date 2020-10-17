@@ -6,7 +6,7 @@ import "./location-item.scss";
 const LocationItem = ({ locationItem }) => {
   const dispatch = useDispatch();
 
-  const { name } = locationItem;
+  const { categoryId, name, address } = locationItem;
 
   const handleLocationItemClick = () => {
     dispatch(allActions.titleActions.updateLocationTitleView(locationItem));
@@ -22,7 +22,9 @@ const LocationItem = ({ locationItem }) => {
 
   return (
     <div className="location-item-container" onClick={handleLocationItemClick}>
-      <h3 className="location-item-title">{name}</h3>
+      <h4 className="location-item-title">{categoryId}</h4>
+      <h4 className="location-item-title">{name}</h4>
+      <h4 className="location-item-title">{address}</h4>
     </div>
   );
 };
