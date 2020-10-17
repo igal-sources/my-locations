@@ -4,10 +4,16 @@ export const FETCH_CATEGORIES = "FETCH_CATEGORIES";
 export const ADD_CATEGORY_ITEM = "ADD_CATEGORY_ITEM";
 export const UPDATE_CATEGORY = "UPDATE_CATEGORY";
 export const REMOVE_CATEGORY = "REMOVE_CATEGORY";
+export const FETCH_LOCATIONS = "FETCH_LOCATIONS";
+export const ADD_LOCATION_ITEM = "ADD_LOCATION_ITEM";
+export const UPDATE_LOCATION = "UPDATE_LOCATION";
+export const REMOVE_LOCATION = "REMOVE_LOCATION";
 
 export const constants = {
   Categories: "Categories",
-  NewCategory: "New Category"
+  Locations: "Locations",
+  NewCategory: "New Category",
+  NewLocation: "New Location",
 };
 
 export const toolbarAction = {

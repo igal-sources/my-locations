@@ -30,3 +30,14 @@ export const useNextCategoryId = () => {
   });
   return max + 1;
 };
+
+export const useNextLocationId = () => {
+  const { locations } = useSelector((state) => state.locationsReducer);
+  let max = 0;
+  locations.forEach((location) => {
+    if (location.locationId > max) {
+      max = location.locationId;
+    }
+  });
+  return max + 1;
+};
