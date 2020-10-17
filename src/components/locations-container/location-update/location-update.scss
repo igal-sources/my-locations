@@ -1,0 +1,38 @@
+.location-update-container {
+  position: relative;
+  box-shadow: 0 0 10px 2px;
+  background-color: #96b8b8;
+  display: table; 
+  margin: auto;
+  margin-top: 150px;
+  width: 50vw;
+  height: 55vh;
+}
+
+.location-update-header {
+  height: 45px;
+  background: #181819;
+  color: white;
+  text-align: center;
+}
+
+.field>:first-child {
+  font-size: large;
+  padding-left: 15px;
+  padding-top: 30px;
+}
+
+.ui.form .inline.field>input {
+  height: 25px;
+  text-align: left;
+  background-color: #d4f1f1;
+}
+
+.location-update-button {
+  text-align: center;
+  width: 15%;
+  display: table-cell; 
+  vertical-align: bottom;
+  bottom: 200px;
+  position: fixed;
+}

@@ -15,7 +15,7 @@ const CategoryConfirmRemove = ({ categoryItem = {}, modalOpen }) => {
   const { name = "" } = categoryItem && categoryItem;
 
   const handleDeleteAction = () => {
-    dispatch(allActions.titleActions.updateTitleView({ name: constants.Categories }));
+    dispatch(allActions.titleActions.updateCategoryTitleView({ name: constants.Categories }));
     dispatch(allActions.categoriesActions.removeCategory(categoryItem));
     setIsOpen(false);
     history.push("./");

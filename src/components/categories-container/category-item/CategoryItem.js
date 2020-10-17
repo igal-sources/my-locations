@@ -9,7 +9,7 @@ const CategoryItem = ({ categoryItem }) => {
   const { name } = categoryItem;
 
   const handleCategoryItemClick = () => {
-    dispatch(allActions.titleActions.updateTitleView(categoryItem));
+    dispatch(allActions.titleActions.updateCategoryTitleView(categoryItem));
     dispatch(
       allActions.toolbarActions.updateActionsStatus({
         CREATE: true,

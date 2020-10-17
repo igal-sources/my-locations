@@ -10,7 +10,7 @@ const LocationsMain = () => {
           <LocationHeader />
         </div>
         <Grid>          
-          <Grid.Column className="locations-main-content" width={14}>
+          <Grid.Column className="locations-main-content" width={16}>
             <LocationList />
           </Grid.Column>
         </Grid>        

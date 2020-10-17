@@ -15,7 +15,7 @@ const LocationConfirmRemove = ({ locationItem = {}, modalOpen }) => {
   const { name = "" } = locationItem && locationItem;
 
   const handleDeleteAction = () => {
-    dispatch(allActions.titleActions.updateTitleView({ name: constants.Categories }));
+    dispatch(allActions.titleActions.updateLocationTitleView({ name: constants.Locations }));
     dispatch(allActions.locationsActions.removeLocation(locationItem));
     setIsOpen(false);
     history.push("./");

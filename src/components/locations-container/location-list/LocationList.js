@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import allActions from "../../../actions";
 import { Table } from "semantic-ui-react";
 import LocationItem from "../location-item/LocationItem";
-import { fetchCategories } from "../../../apis/categoriesService";
+import { fetchLocations } from "../../../apis/locationsService";
 import * as types from "../../../shared/types";
 import "./location-list.scss";
 
@@ -15,7 +15,7 @@ const LocationList = () => {
   const updateHeader = (actions) => {
     dispatch(allActions.titleActions.updateLocationTitleView({name: types.constants.Locations}));
     dispatch(allActions.toolbarActions.updateActionsStatus(actions));    
-    fetchCategories((locations) => {
+    fetchLocations((locations) => {
       console.log('LocationList: ', locations);
       setLocations(locations);
     });
