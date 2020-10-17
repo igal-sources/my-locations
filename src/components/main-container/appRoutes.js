@@ -6,6 +6,7 @@ import CategoryAdd from "../categories-container/category-add/CategoryAdd";
 import CategoryUpdate from "../categories-container/category-update/CategoryUpdate";
 import LocationAdd from "../locations-container/location-add/LocationAdd";
 import LocationUpdate from "../locations-container/location-update/LocationUpdate";
+import LocationsMap from "../locations-container/locations-map/LocationsMap";
 import NotFoundPage from "../main-container/not-found-page/NotFoundPage";
 
 export default () => (
@@ -19,6 +20,7 @@ export default () => (
     <Route path="/add-location" component={LocationAdd} />
     <Route path="/update-location" component={LocationUpdate} />
     <Route path="/view-location" component={LocationUpdate} />
+    <Route path="/location-map" component={() => <LocationsMap />} />
     <Route component={NotFoundPage} />
   </Switch>
 );

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import allActions from "../../../actions";
 import { Table } from "semantic-ui-react";
 import LocationItem from "../location-item/LocationItem";
@@ -13,9 +14,24 @@ const LocationList = () => {
   const isCancelled = useRef(false);
   const [Location, setLocations] = useState([]);
 
-  const categoryName = (categoryId) => {
+  const handleLocationItemClick = () => {
+    console.log("handleLocationItemClick: ");
+  };
+  const handleRowItemClick = (locationItem) => {
+    console.log('coordinates: ', locationItem);
+    dispatch(allActions.titleActions.updateLocationTitleView(locationItem));
+    dispatch(
+      allActions.toolbarActions.updateActionsStatus({
+        CREATE: true,
+        READ: false,
+        UPDATE: false,
+        DELETE: false,
+      })
+    );
+  };
+  const getCategoryName = (categoryId) => {
     var name;
-    getCategoryById((categoryId), category => {
+    getCategoryById(categoryId, (category) => {
       name = category.name;
     });
     return name;
@@ -61,12 +77,19 @@ const LocationList = () => {
           </Table.Header>
           <Table.Body>
             {Location &&
-              Location.map(({ categoryId, name, address, coordinates }, index) => (
-                <Table.Row key={index} className="location-list-table-row">
-                  <Table.Cell>{categoryName(categoryId)}</Table.Cell>
+              Location.map(({ locationId, categoryId, name, address, coordinates }, index) => (
+                <Table.Row
+                  key={index}
+                  className="location-list-table-row"
+                  onClick={() => handleRowItemClick({ locationId, categoryId, name, address, coordinates })}
+                >
+                  <Table.Cell>{getCategoryName(categoryId)}</Table.Cell>
                   <Table.Cell>{name}</Table.Cell>
                   <Table.Cell>{address}</Table.Cell>
-                  <Table.Cell>{coordinates.latitude}</Table.Cell>
+                  <Table.Cell onClick={handleLocationItemClick(coordinates)}>
+                    <Link className="location-list-table-link"
+                    to="/location-map">Go to</Link>
+                  </Table.Cell>
                 </Table.Row>
               ))}
           </Table.Body>

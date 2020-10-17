@@ -27,6 +27,13 @@
           border: none;
         }
 
+        &-table-row {
+          cursor: pointer;
+          &:hover {
+            background: #a9cadf;
+          }
+        }
+
         &-row-item {
           height: 64px;
           font-style: normal;

@@ -20,7 +20,6 @@ const defaultState = {
 };
 
 export const locationsReducer = (state = defaultState, action) => {
-  console.log("action: ", action);
   switch (action.type) {
     case types.FETCH_LOCATIONS:
       return {
