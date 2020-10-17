@@ -1,8 +1,13 @@
 import { useSelector } from "react-redux";
 
-export const useViewTitle = () => {
+export const useCategoryViewTitle = () => {
   const { categoryItem } = useSelector((state) => state.titleReducer);
   return categoryItem;
+};
+
+export const useLocationViewTitle = () => {
+  const { locationItem } = useSelector((state) => state.titleReducer);
+  return locationItem;
 };
 
 export const useSelectedCategory = (id) => {

@@ -14,7 +14,7 @@ const App = () => {
           <Header />
         </div>
         <Grid>          
-          <Grid.Column className="App-content" width={14}>
+          <Grid.Column className="App-content" width={16}>
             <Routes />
           </Grid.Column>
         </Grid>        

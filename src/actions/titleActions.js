@@ -1,10 +1,17 @@
 import * as types from "../shared/types";
 
-export const updateTitleView = categoryItem => {
+export const updateCategoryTitleView = categoryItem => {
   return {
-    type: types.UPDATE_TITLE_VIEW,
+    type: types.UPDATE_CATEGORY_TITLE_VIEW,
     categoryItem
   };
 };
 
-export default { updateTitleView };
+export const updateLocationTitleView = locationItem => {
+  return {
+    type: types.UPDATE_LOCATION_TITLE_VIEW,
+    locationItem
+  };
+};
+
+export default { updateCategoryTitleView, updateLocationTitleView };

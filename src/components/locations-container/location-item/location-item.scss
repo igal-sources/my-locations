@@ -1,0 +1,13 @@
+.location-item-container {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  &:hover {
+    background: #a9cadf;
+  }
+}
+
+.location-item-title {
+  color: #000000;
+  padding: 0 8px;
+}
