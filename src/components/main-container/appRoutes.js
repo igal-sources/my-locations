@@ -20,7 +20,7 @@ export default () => (
     <Route path="/add-location" component={LocationAdd} />
     <Route path="/update-location" component={LocationUpdate} />
     <Route path="/view-location" component={LocationUpdate} />
-    <Route path="/location-map" component={() => <LocationsMap />} />
+    <Route path="/location-map" component={LocationsMap} />
     <Route component={NotFoundPage} />
   </Switch>
 );

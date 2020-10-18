@@ -4,14 +4,16 @@ import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 const LocationsMap = () => {
 
   const GoogleMapExample = withGoogleMap((props) => (
-    <GoogleMap defaultCenter={{ lat: 32.13675, lng: 34.84104 }} defaultZoom={13}></GoogleMap>
+    <GoogleMap defaultCenter={{ lat: 32.13675, lng: 34.84104 }} defaultZoom={15}>
+      <Marker position={{ lat: 32.13675, lng: 34.84104 }} />
+    </GoogleMap>
   ));
 
-  console.log("LocationsMap: ");
   return (
     <div>
+      <div>MAP</div>
       <GoogleMapExample
-        containerElement={<div style={{ height: `500px`, width: "500px" }} />}
+        containerElement={<div style={{ height: "700px", width: "900px" }} />}
         mapElement={<div style={{ height: `100%` }} />}
       />
     </div>
