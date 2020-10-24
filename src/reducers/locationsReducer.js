@@ -34,7 +34,8 @@ export const locationsReducer = (state = defaultState, action) => {
     case types.UPDATE_LOCATION:
       const ind = state.locations.findIndex(
         (location) => location.locationId === action.location.locationId
-      );
+        );
+        console.log('action.location: ', action.location);
       return {
         ...state,
         ...(state.locations[ind] = action.location),

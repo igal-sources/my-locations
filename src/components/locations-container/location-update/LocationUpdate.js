@@ -21,7 +21,8 @@ const LocationUpdate = (props) => {
   //console.log("locationItem: ", locationItem);
 
   const {
-    id = null,
+    locationId = null,
+    categoryId,
     name = "",
     address,
     coordinates: { latitude, longitude },
@@ -34,7 +35,15 @@ const LocationUpdate = (props) => {
   const handleClick = () => {
     setActionsState(types.actionsMapping);
     dispatch(allActions.titleActions.updateLocationTitleView({ name: types.constants.Locations }));
-    dispatch(allActions.locationsActions.updateLocation({ id: id, name: newName }));
+    dispatch(
+      allActions.locationsActions.updateLocation({
+        locationId,
+        categoryId,
+        name: newName,
+        address: locationAddress,
+        coordinates: { latitude: locationLatitude, longitude: locationLongitude },
+      })
+    );
     history.push("./locations");
   };
 
@@ -46,7 +55,7 @@ const LocationUpdate = (props) => {
     // Enable or disable logs. Its optional.
     Geocode.enableDebug();
 
-    Geocode.fromAddress(address).then(
+    Geocode.fromAddress(locationAddress).then(
       (response) => {
         const { lat, lng } = response.results[0].geometry.location;
         setLocationLatitude(lat);
@@ -127,7 +136,7 @@ const LocationUpdate = (props) => {
             <input
               className="location-update-input"
               value={locationLatitude}
-              disabled={readOnly}
+              disabled={true}
               placeholder="latitude"
               autoFocus
             ></input>
@@ -137,7 +146,7 @@ const LocationUpdate = (props) => {
             <input
               className="location-update-input"
               value={locationLongitude}
-              disabled={readOnly}
+              disabled={true}
               placeholder="longitude"
               autoFocus
             ></input>
