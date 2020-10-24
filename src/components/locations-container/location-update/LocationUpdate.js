@@ -125,6 +125,7 @@ const LocationUpdate = (props) => {
           ></input>
           <Button
             className="location-update-address"
+            disabled={readOnly}
             content="Update coordinates"
             onClick={handleUpdateCoordinates}
           />

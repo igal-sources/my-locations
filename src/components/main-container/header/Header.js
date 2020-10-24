@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, Route, useLocation } from "react-router-dom";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
 import "./header.scss";
 

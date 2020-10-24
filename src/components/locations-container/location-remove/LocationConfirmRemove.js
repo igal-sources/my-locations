@@ -18,7 +18,7 @@ const LocationConfirmRemove = ({ locationItem = {}, modalOpen }) => {
     dispatch(allActions.titleActions.updateLocationTitleView({ name: constants.Locations }));
     dispatch(allActions.locationsActions.removeLocation(locationItem));
     setIsOpen(false);
-    history.push("./");
+    history.push("./locations");
   };
   useEffect(() => {
     setIsOpen(modalOpen);
@@ -29,7 +29,7 @@ const LocationConfirmRemove = ({ locationItem = {}, modalOpen }) => {
   }, [modalOpen]);
   return (
     <Modal
-      className="bike-details-card-container"
+      className="location-remove-container"
       onClose={() => setIsOpen(false)}
       onOpen={() => setIsOpen(true)}
       open={isOpen}

@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import allActions from "../../../actions";
 import { Table } from "semantic-ui-react";
-import LocationItem from "../location-item/LocationItem";
 import { fetchLocations } from "../../../apis/locationsService";
 import { getCategoryById } from "../../../apis/categoriesService";
 import * as types from "../../../shared/types";
@@ -14,9 +13,6 @@ const LocationList = () => {
   const isCancelled = useRef(false);
   const [Location, setLocations] = useState([]);
 
-  const handleLocationItemClick = () => {
-    console.log("handleLocationItemClick: ");
-  };
   const handleRowItemClick = (locationItem) => {
     console.log('coordinates: ', locationItem);
     dispatch(allActions.titleActions.updateLocationTitleView(locationItem));
@@ -86,9 +82,9 @@ const LocationList = () => {
                   <Table.Cell>{getCategoryName(categoryId)}</Table.Cell>
                   <Table.Cell>{name}</Table.Cell>
                   <Table.Cell>{address}</Table.Cell>
-                  <Table.Cell onClick={handleLocationItemClick(coordinates)}>
+                  <Table.Cell>
                     <Link className="location-list-table-link"
-                    to="/location-map">Go to</Link>
+                    to={{ pathname: "/location-map", state: { locationId, categoryId, name, address, coordinates } }}>Show</Link>
                   </Table.Cell>
                 </Table.Row>
               ))}

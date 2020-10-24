@@ -13,7 +13,7 @@ const CategoryHeader = () => {
   const [headerTitle, setHeaderTitle] = useState();
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleDeleteAction = () => {
+  const handleCategoryDeleteAction = () => {
     setModalOpen(true);
   };
 
@@ -67,7 +67,7 @@ const CategoryHeader = () => {
       >
         UPDATE
       </Link>
-      <Link to="/" onClick={handleDeleteAction} className={deleteActionLinkClassName}>
+      <Link to="/" onClick={handleCategoryDeleteAction} className={deleteActionLinkClassName}>
         DELETE
       </Link>
       <CategoryConfirmRemove categoryItem={categoryItem} modalOpen={modalOpen} />

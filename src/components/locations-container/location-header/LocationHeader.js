@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { useLocationViewTitle, useMappingActions } from "../../../shared/hooks/use-selectors";
-import LocationConfirmRemove from "../location-remove/LocationConfirmRemove";
+import LocationConfirmRemove from "../../locations-container/location-remove/LocationConfirmRemove";
 import * as types from "../../../shared/types";
 import "./location-header.scss";
 
@@ -50,7 +50,7 @@ const LocationHeader = () => {
       </div>
       <Link
         to="/add-location"
-        onClick={() => setHeaderTitle(types.constants.NewCategory)}
+        onClick={() => setHeaderTitle(types.constants.NewLocation)}
         className={createActionLinkClassName}
       >
         CREATE

@@ -16,7 +16,6 @@ const CategoryList = () => {
     dispatch(allActions.titleActions.updateCategoryTitleView({name: types.constants.Categories}));
     dispatch(allActions.toolbarActions.updateActionsStatus(actions));    
     fetchCategories((categories) => {
-      console.log('categoriesList: ', categories);
       setCategories(categories);
     });
   };

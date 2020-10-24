@@ -18,7 +18,7 @@ const CategoryConfirmRemove = ({ categoryItem = {}, modalOpen }) => {
     dispatch(allActions.titleActions.updateCategoryTitleView({ name: constants.Categories }));
     dispatch(allActions.categoriesActions.removeCategory(categoryItem));
     setIsOpen(false);
-    history.push("./");
+    history.push("./categories");
   };
   useEffect(() => {
     setIsOpen(modalOpen);
@@ -29,7 +29,7 @@ const CategoryConfirmRemove = ({ categoryItem = {}, modalOpen }) => {
   }, [modalOpen]);
   return (
     <Modal
-      className="bike-details-card-container"
+      className="category-remove-container"
       onClose={() => setIsOpen(false)}
       onOpen={() => setIsOpen(true)}
       open={isOpen}

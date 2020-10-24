@@ -1,7 +1,13 @@
 import React from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
-const LocationsMap = () => {
+const LocationsMap = (props) => {
+  //const { locationId, categoryId, name, address, coordinates , readOnly } = props.location.state;
+  const {
+    coordinates: { latitude, longitude },
+  } = props.location.state;
+
+  console.log("props.location.state: ", props.location.state);
   //key: AIzaSyCUcKKB0ID7wEwe2sg87xTxvLTT4IBevQc
   const mapStyles = {
     height: "90vh",
@@ -9,14 +15,14 @@ const LocationsMap = () => {
   };
 
   const defaultCenter = {
-    lat: 32.13675,
-    lng: 34.84104,
+    lat: latitude,
+    lng: longitude,
   };
 
   return (
     <LoadScript googleMapsApiKey="AIzaSyCUcKKB0ID7wEwe2sg87xTxvLTT4IBevQc">
       <GoogleMap mapContainerStyle={mapStyles} zoom={18} center={defaultCenter}>
-        <Marker position={{ lat: 32.13675, lng: 34.84104 }} />
+        <Marker position={{ lat: latitude, lng: longitude }} />
       </GoogleMap>
     </LoadScript>
   );
