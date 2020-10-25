@@ -43,7 +43,6 @@ export const locationsReducer = (state = defaultState, action) => {
       };
     case types.REMOVE_LOCATION:
       return {
-        ...state,
         ...state.locations.filter((c) => c.locationId !== action.location.locationId),
       };
     default:
