@@ -67,7 +67,7 @@ const LocationHeader = () => {
       >
         UPDATE
       </Link>
-      <Link to="/" onClick={handleDeleteAction} className={deleteActionLinkClassName}>
+      <Link to="/locations" onClick={handleDeleteAction} className={deleteActionLinkClassName}>
         DELETE
       </Link>
       <LocationConfirmRemove locationItem={locationItem} modalOpen={modalOpen} />
